@@ -1,15 +1,14 @@
 .card {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template: 1fr / 200px 1fr;
 
     border: 1px solid black;
     border-radius: 5px;
 
     max-width: 700px;
+    min-height: 250px;
 
     &__image {
-        width: 200px;
-        height: 250px;
         object-fit: cover;
     }
 
