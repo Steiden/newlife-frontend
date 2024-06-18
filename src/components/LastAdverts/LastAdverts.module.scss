@@ -1,0 +1,27 @@
+.adverts {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	&__title {
+		font-size: 24px;
+		font-weight: 600;
+	}
+
+	&__list {
+		display: grid;
+		grid-template: auto / 1fr;
+        gap: 24px;
+        place-items: center;
+	}
+
+	&__item {
+	}
+
+	&__empty {
+		margin-block: 50px;
+		font-size: 26px;
+		text-align: center;
+		width: 100%;
+	}
+}
