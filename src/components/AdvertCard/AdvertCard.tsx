@@ -8,8 +8,6 @@ type PropsType = {
 
 export const AdvertCard = (props: PropsType) => {
 	const getImage = (source: string): string => {
-		console.log(`/img/animals/${source}`);
-
 		return `/img/animals/${source}`;
 	};
 
