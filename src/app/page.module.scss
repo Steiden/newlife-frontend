@@ -11,11 +11,11 @@
 		flex-direction: column;
 		gap: 35px;
 
-		background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+		background: linear-gradient(rgba(0, 0, 0, 0.2) 80%, rgba(255, 255, 255, 1) 100%), linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
 			url("/img/background/animal-bg.jpg") no-repeat center center / cover;
 		color: white;
 
-		height: calc(100dvh - 70px);
+		height: 100dvh;
 
 		&__title {
 			font-size: 64px;

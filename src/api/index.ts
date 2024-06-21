@@ -1,5 +1,6 @@
-import { getAdverts } from "./Advert";
+import { getAdverts, getAdvert } from "./Advert";
 
 export {
-    getAdverts
+    getAdverts,
+    getAdvert
 }

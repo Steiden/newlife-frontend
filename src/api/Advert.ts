@@ -12,3 +12,15 @@ export const getAdverts = async (): Promise<AdvertType[]> => {
 		return [];
 	}
 };
+
+export const getAdvert = async (id: string): Promise<AdvertType> => {
+	try {
+		const response: AxiosResponse = await axios.get(`${endpoints.adverts}/${id}`);
+		if (response.status !== 200) throw new Error(response.statusText);
+		return response.data.data;
+	}
+	catch (e) {
+        console.log(e);
+		return {} as AdvertType;
+    }
+}

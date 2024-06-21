@@ -3,6 +3,8 @@
 	flex-direction: column;
 	gap: 10px;
 
+	margin-block: 50px;
+
 	&__title {
 		font-size: 24px;
 		font-weight: 600;
@@ -10,12 +12,20 @@
 
 	&__list {
 		display: grid;
-		grid-template: auto / 1fr;
-        gap: 24px;
-        place-items: center;
+		grid-template: auto / 1fr 1fr;
+		gap: 24px;
+		place-items: center;
+
+		perspective: 1000px;
 	}
 
 	&__item {
+		transform-style: preserve-3d;
+		transition-duration: 0.3s;
+
+		&:hover {
+			transform: rotate3d(0.75, 1, 0, 7deg);
+		}
 	}
 
 	&__empty {

@@ -25,7 +25,10 @@ export const AdvertCard = (props: PropsType) => {
 			<div className={styles.card__content}>
 				<h4 className={styles.card__title}>{props.advert.title}</h4>
 				<p className={styles.card__text}>&bull; {props.advert?.animal_type?.name}</p>
-				<p className={styles.card__text}>{props.advert.description}</p>
+				<p className={styles.card__text}>&bull; {new Date(props.advert?.created_at).toLocaleDateString()}</p>
+				<div className={`${styles['card__description-wrapper']}`}>
+					<p className={styles.card__text}>{props.advert.description}</p>
+				</div>
 			</div>
 		</article>
 	);

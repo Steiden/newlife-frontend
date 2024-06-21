@@ -19,7 +19,10 @@ export default function RootLayout({
 		<html lang="ru">
 			<body className={montserrat.className}>
 				<Header />
-				{children}
+				<main>{children}</main>
+				<div className="heart__wrapper">
+					<div className="heart"></div>
+				</div>
 			</body>
 		</html>
 	);
