@@ -5,6 +5,7 @@ import styles from "./page.module.scss";
 import { useEffect, useState } from "react";
 import { AdvertType } from "@/types/Database";
 import { getAdverts } from "@/api";
+import Image from "next/image";
 
 export default function Home() {
 	const [lastAdverts, setLastAdverts] = useState<AdvertType[]>([]);

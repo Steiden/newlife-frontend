@@ -1,3 +1,20 @@
 .adverts {
-    margin-top: 100px;
+	margin-top: 100px;
+}
+
+.arrow {
+	position: fixed;
+	top: 50%;
+	translate: 0 -50%;
+
+    z-index: 100;
+
+	&--left {
+		left: 25px;
+	}
+
+	&--right {
+		rotate: 180deg;
+		right: 25px;
+	}
 }
