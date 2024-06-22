@@ -25,7 +25,17 @@ export default function Login() {
 		if (!user?.id) {
 			setToastData({
 				title: "Не удалось авторизоваться",
-				text: "Пользователь с таким логинов не найден. Проверьте корректность введенных данных и повторите попытку",
+				text: "Пользователь с таким логином не найден. Проверьте корректность введенных данных и повторите попытку",
+				status: ToastStatusEnum.WARNING,
+			});
+			setIsShow(true);
+			return;
+		}
+
+		if (password !== user.password) {
+			setToastData({
+				title: "Не удалось авторизоваться",
+				text: "Вы ввели неправильный пароль. Попробуйте другой пароль и повторите попытку",
 				status: ToastStatusEnum.WARNING,
 			});
 			setIsShow(true);
@@ -33,7 +43,7 @@ export default function Login() {
 		}
 
 		localStorage.setItem("user", JSON.stringify(user));
-		router.push('/users/me');
+		router.push("/users/me");
 	};
 
 	return (
