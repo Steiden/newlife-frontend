@@ -8,7 +8,7 @@ export const getAdverts = async (): Promise<AdvertType[]> => {
 		if (response.status !== 200) throw new Error(response.statusText);
 		return response.data.data;
 	} catch (e) {
-        console.log(e);
+		console.log(e);
 		return [];
 	}
 };
@@ -18,9 +18,19 @@ export const getAdvert = async (id: string): Promise<AdvertType> => {
 		const response: AxiosResponse = await axios.get(`${endpoints.adverts}/${id}`);
 		if (response.status !== 200) throw new Error(response.statusText);
 		return response.data.data;
-	}
-	catch (e) {
-        console.log(e);
+	} catch (e) {
+		console.log(e);
 		return {} as AdvertType;
-    }
-}
+	}
+};
+
+export const createAdvert = async (advert: AdvertType): Promise<AdvertType> => {
+	try {
+		const response: AxiosResponse = await axios.post(endpoints.adverts, advert);
+		if (response.status !== 200) throw new Error(response.statusText);
+		return response.data.data;
+	} catch (e) {
+		console.log(e);
+		return {} as AdvertType;
+	}
+};
