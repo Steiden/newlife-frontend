@@ -43,7 +43,7 @@ export default function Advert(props: PropsType) {
 				<>
 					<div className={`${styles["advert__img-container"]}`}>
 						<Image
-							src={getImageSource(advert.advert_photos[0].image)}
+							src={getImageSource(advert.advert_photos[0]?.image)}
 							alt="animal"
 							className={`${styles["advert__img"]}`}
 							width={500}
@@ -53,14 +53,14 @@ export default function Advert(props: PropsType) {
 							className={`${styles["advert__img-container"]} ${styles["advert__img-container--horizontal"]}`}
 						>
 							<Image
-								src={getImageSource(advert.advert_photos[1].image)}
+								src={getImageSource(advert.advert_photos[1]?.image)}
 								alt="animal"
 								className={`${styles["advert__img"]}`}
 								width={250}
 								height={125}
 							/>
 							<Image
-								src={getImageSource(advert.advert_photos[2].image)}
+								src={getImageSource(advert.advert_photos[2]?.image)}
 								alt="animal"
 								className={`${styles["advert__img"]}`}
 								width={250}

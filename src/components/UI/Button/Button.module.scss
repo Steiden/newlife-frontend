@@ -1,0 +1,16 @@
+.button {
+    border: 1px solid black;
+    border-radius: 8px;
+
+    font-size: 18px;
+
+    min-height: 35px;
+    min-width: 200px;
+    padding-inline: 35px;
+
+    transition-duration: .3s;
+
+    &:hover {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    }
+}

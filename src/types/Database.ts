@@ -71,20 +71,20 @@ export type RoleType = {
 }
 
 export type UserType = {
-    id: number;
-    second_name: string;
-    first_name: string;
-    patronymic: string;
-    telephone: string;
-    email: string;
-    login: string;
-    password: string;
-    is_banned: boolean;
-    role_id: number;
-    created_at: Date;
-    updated_at: Date;
-    role: RoleType;
-    adverts: AdvertType[];
+    id?: number;
+    second_name?: string;
+    first_name?: string;
+    patronymic?: string;
+    telephone?: string;
+    email?: string;
+    login?: string;
+    password?: string;
+    is_banned?: boolean;
+    role_id?: number;
+    created_at?: Date;
+    updated_at?: Date;
+    role?: RoleType;
+    adverts?: AdvertType[];
 }
 
 export type UserActionType = {
