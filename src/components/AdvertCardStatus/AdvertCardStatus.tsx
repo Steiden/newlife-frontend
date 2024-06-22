@@ -9,11 +9,11 @@ export const AdvertCardStatus = (props: PropsType) => {
 	const getStatusStyle = (): string => {
 		return props.status.name === "На рассмотрении"
 			? "consideration"
-			: props.status.name === "Опубликован"
+			: props.status.name === "Опубликовано"
 			? "published"
-			: props.status.name === "Закрыт"
+			: props.status.name === "Закрыто"
 			? "closed"
-			: props.status.name === "Отклонен"
+			: props.status.name === "Отклонено"
 			? "rejected"
 			: "";
 	};
