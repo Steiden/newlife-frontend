@@ -7,7 +7,13 @@
 	top: 50%;
 	translate: 0 -50%;
 
+    transition-duration: .3s;
+
     z-index: 100;
+
+    &:hover {
+        scale: 1.1;
+    }
 
 	&--left {
 		left: 25px;

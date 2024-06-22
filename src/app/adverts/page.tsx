@@ -19,6 +19,8 @@ export default function Adverts() {
 		searchParams.get("page") ? parseInt(searchParams.get("page")!) : 1
 	);
 
+	
+	// * UseEffect
 	useEffect(() => {
 		const fetchAdverts = async () => {
 			setAdverts(
@@ -34,7 +36,10 @@ export default function Adverts() {
 		router.push(`/adverts?page=${currPage}`);
 		setAdvertsToList(returnAdverts());
 	}, [adverts, currPage]);
+	// * /UseEffect
 
+
+	// * Methods
 	const returnAdverts = (): AdvertType[] => {
 		return adverts.slice(currPage * 10 - 1, currPage * 10 + 9);
 	};
@@ -46,6 +51,8 @@ export default function Adverts() {
 	const prevAdverts = (): void => {
 		setCurrPage(currPage - 1 < 1 ? 1 : currPage - 1);
 	};
+	// * /Methods
+
 
 	return (
 		<div className={styles.adverts}>

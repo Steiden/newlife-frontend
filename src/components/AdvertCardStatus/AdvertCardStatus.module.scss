@@ -1,0 +1,37 @@
+.status {
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    translate: 25px -50%;
+
+    font-weight: 500;
+
+    z-index: 100;
+
+    &--consideration,
+    &--published,
+    &--closed,
+    &--rejected {
+        display: block;
+    }
+
+    &--consideration {
+        background-color: orange;
+    }
+
+    &--published {
+        background-color: lime;
+    }
+
+    &--closed {
+        background-color: gray;
+    }
+
+    &--rejected {
+        background-color: rgb(173, 9, 9);
+    }
+}

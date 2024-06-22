@@ -9,8 +9,11 @@
 	max-width: 700px;
 	max-height: 250px;
 
-	overflow: hidden;
+	position: relative;
 
+	&__img-container {
+		overflow: hidden;
+	}
 
 	&__image {
 		object-fit: cover;
