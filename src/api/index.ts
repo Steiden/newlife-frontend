@@ -1,4 +1,4 @@
-import { getAdverts, getAdvert, createAdvert } from "./Advert";
+import { getAdverts, getAdvert, createAdvert, deleteAdvert } from "./Advert";
 import { getUserByLogin, getUser, createUser, updateUser } from "./Users";
 import { createAdvertAdress } from "./AdvertAddress";
 import { getAnimalTypes } from "./AnimalType";
@@ -13,6 +13,7 @@ export {
     updateUser,
     createAdvertAdress,
     createAdvert,
+    deleteAdvert,
     getAnimalTypes,
     getLocalities
 }

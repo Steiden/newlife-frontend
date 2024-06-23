@@ -9,9 +9,35 @@
 	border-radius: 25px;
 
 	margin-top: 100px;
+	margin-inline: 150px;
 	padding: 25px;
+	width: 100%;
 
-	width: fit-content;
+	position: relative;
+
+	&__actions {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		position: absolute;
+		top: 0;
+		right: 0;
+		translate: 50% 50%;
+	}
+
+	&__action {
+		border-radius: 50%;
+		padding: 10px;
+
+		&:nth-child(1n) {
+			background-color: orange;
+		}
+
+		&:nth-child(2n) {
+			background-color: red;
+		}
+	}
 
 	&__img-container {
 		display: flex;
@@ -40,6 +66,13 @@
 		gap: 10px;
 
 		max-width: 500px;
+		width: 100%;
+
+		form {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
 	}
 
 	&__title {

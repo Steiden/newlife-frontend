@@ -51,7 +51,7 @@ export default function User(props: PropsType) {
 		};
 
 		const userUpdated = await updateUser(userData);
-        setUser(userUpdated);
+		setUser(userUpdated);
 	};
 
 	return (
@@ -96,25 +96,31 @@ export default function User(props: PropsType) {
 					onChange={(e) => setEmail(e.target.value)}
 				/>
 			</div>
-			<div className={styles.data__container}>
-				<p className={styles.data__text}>Логин: {user.login}</p>
-				<Input
-					className={`${styles.data__input} ${isEditable ? styles["data__input--editable"] : ""}`}
-					placeholder="Логин"
-					value={login}
-					onChange={(e) => setLogin(e.target.value)}
-				/>
-			</div>
 			{user.id === currUser.id && (
-				<div className={styles.data__container}>
-					<p className={styles.data__text}>Пароль: {user.password}</p>
-					<Input
-						className={`${styles.data__input} ${isEditable ? styles["data__input--editable"] : ""}`}
-						placeholder="Пароль"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</div>
+				<>
+					<div className={styles.data__container}>
+						<p className={styles.data__text}>Логин: {user.login}</p>
+						<Input
+							className={`${styles.data__input} ${
+								isEditable ? styles["data__input--editable"] : ""
+							}`}
+							placeholder="Логин"
+							value={login}
+							onChange={(e) => setLogin(e.target.value)}
+						/>
+					</div>
+					<div className={styles.data__container}>
+						<p className={styles.data__text}>Пароль: {user.password}</p>
+						<Input
+							className={`${styles.data__input} ${
+								isEditable ? styles["data__input--editable"] : ""
+							}`}
+							placeholder="Пароль"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</div>
+				</>
 			)}
 			{user.id === currUser.id && isEditable && <Button type="submit">Сохранить</Button>}
 		</form>

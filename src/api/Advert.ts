@@ -34,3 +34,25 @@ export const createAdvert = async (advert: AdvertType): Promise<AdvertType> => {
 		return {} as AdvertType;
 	}
 };
+
+export const updateAdvert = async (advert: AdvertType): Promise<AdvertType> => {
+	try {
+		const response: AxiosResponse = await axios.put(`${endpoints.adverts}/${advert.id}`, advert);
+		if (response.status !== 200) throw new Error(response.statusText);
+		return response.data.data;
+	} catch (e) {
+		console.log(e);
+		return {} as AdvertType;
+	}
+};
+
+export const deleteAdvert = async (id: string): Promise<AdvertType> => {
+	try {
+		const response: AxiosResponse = await axios.delete(`${endpoints.adverts}/${id}`);
+		if (response.status !== 200) throw new Error(response.statusText);
+		return response.data;
+	} catch (e) {
+		console.log(e);
+		return {} as AdvertType;
+	}
+};
