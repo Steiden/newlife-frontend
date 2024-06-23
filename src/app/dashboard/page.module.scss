@@ -1,11 +1,15 @@
 .dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(5px);
     border: 1px solid black;
     border-radius: 25px;
 
     padding: 50px;
-    margin-top: 50px;
+    margin-block: 100px 50px;
     margin-inline: 100px;
 
     width: 100%;

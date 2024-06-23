@@ -4,6 +4,7 @@ import { createAdvertAdress } from "./AdvertAddress";
 import { getAnimalTypes, updateAnimalType, deleteAnimalType } from "./AnimalType";
 import { getLocalities } from "./Locality";
 import { getUserActions, createUserAction } from "./UserAction";
+import { getUserBlockings, createUserBlocking } from "./UserBlocking";
 
 export {
 	getAdverts,
@@ -22,4 +23,6 @@ export {
 	getLocalities,
 	getUserActions,
 	createUserAction,
+	getUserBlockings,
+    createUserBlocking,
 };

@@ -2,26 +2,20 @@
 
 import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
-import { AdvertType, UserActionType, UserType } from "@/types/Database";
-import { getAdverts, getUserActions, getUsers } from "@/api";
+import { AdvertType, UserActionType, UserBlockingType, UserType } from "@/types/Database";
+import { getAdverts, getUserActions, getUserBlockings, getUsers } from "@/api";
 import { Chart } from "primereact/chart";
 
 export default function Dashboard() {
-	const [userActions, setUserActions] = useState<UserActionType[]>([]);
 	const [users, setUsers] = useState<UserType[]>([]);
 	const [adverts, setAdverts] = useState<AdvertType[]>([]);
 	const [rejectedAdverts, setRejectedAdverts] = useState<AdvertType[]>([]);
+	const [userBlockings, setUserBlockings] = useState<UserBlockingType[]>([]);
 
 	const [userRegistrationsData, setUserRegistrationsData] = useState({});
 	const [newAdvertsData, setNewAdvertsData] = useState({});
 	const [rejectedAdvertsData, setRejectedAdvertsData] = useState({});
-
-	useEffect(() => {
-		const fetchUserActions = async () => {
-			setUserActions(await getUserActions());
-		};
-		fetchUserActions();
-	}, []);
+	const [userBlockingsData, setUserBlockingsData] = useState({});
 
 	useEffect(() => {
 		const fetchUsers = async () => {
@@ -46,6 +40,13 @@ export default function Dashboard() {
 	}, []);
 
 	useEffect(() => {
+		const fetchUserBlockings = async () => {
+			setUserBlockings(await getUserBlockings());
+		};
+		fetchUserBlockings();
+	}, []);
+
+	useEffect(() => {
 		setUserRegistrationsData({
 			labels: users.reduce((acc: string[], val: UserType) => {
 				const dateString = new Date(val.created_at!).toLocaleDateString();
@@ -56,17 +57,13 @@ export default function Dashboard() {
 			}, []),
 			datasets: [
 				{
-					label: "Пользователи",
+					label: "",
 					data: Object.values(
 						users.reduce((acc: any, val: UserType) => {
 							const dateString = `${new Date(val.created_at!).getMonth()}.${new Date(
 								val.created_at!
 							).getDate()}.${new Date(val.created_at!).getFullYear()}`;
-
-							console.log(acc, dateString);
-
 							if (!acc[dateString]) acc[dateString] = 0;
-
 							acc[dateString]++;
 							return acc;
 						}, [])
@@ -92,17 +89,13 @@ export default function Dashboard() {
 			}, []),
 			datasets: [
 				{
-					label: "Объявления",
+					label: "",
 					data: Object.values(
 						adverts.reduce((acc: any, val: AdvertType) => {
 							const dateString = `${new Date(val.created_at!).getMonth()}.${new Date(
 								val.created_at!
 							).getDate()}.${new Date(val.created_at!).getFullYear()}`;
-
-							console.log(acc, dateString);
-
 							if (!acc[dateString]) acc[dateString] = 0;
-
 							acc[dateString]++;
 							return acc;
 						}, [])
@@ -126,17 +119,13 @@ export default function Dashboard() {
 			}, []),
 			datasets: [
 				{
-					label: "Объявления",
+					label: "",
 					data: Object.values(
 						rejectedAdverts.reduce((acc: any, val: AdvertType) => {
 							const dateString = `${new Date(val.created_at!).getMonth()}.${new Date(
 								val.created_at!
 							).getDate()}.${new Date(val.created_at!).getFullYear()}`;
-
-							console.log(acc, dateString);
-
 							if (!acc[dateString]) acc[dateString] = 0;
-
 							acc[dateString]++;
 							return acc;
 						}, [])
@@ -148,6 +137,36 @@ export default function Dashboard() {
 			],
 		});
 	}, [rejectedAdverts]);
+
+	useEffect(() => {
+		setUserBlockingsData({
+			labels: userBlockings.reduce((acc: string[], val: UserBlockingType) => {
+				const dateString = new Date(val.created_at!).toLocaleDateString();
+				if (!acc.includes(dateString)) {
+					acc.push(dateString);
+				}
+				return acc;
+			}, []),
+			datasets: [
+				{
+					label: "",
+					data: Object.values(
+						userBlockings.reduce((acc: any, val: UserBlockingType) => {
+							const dateString = `${new Date(val.created_at!).getMonth()}.${new Date(
+								val.created_at!
+							).getDate()}.${new Date(val.created_at!).getFullYear()}`;
+							if (!acc[dateString]) acc[dateString] = 0;
+							acc[dateString]++;
+							return acc;
+						}, [])
+					),
+					backgroundColor: "rgba(0, 196, 255, 0.2)",
+					borderColor: "rgba(0, 196, 255, 1)",
+					borderWidth: 1,
+				},
+			],
+		});
+	}, [userBlockings]);
 
 	return (
 		<section className={`${styles.dashboard}`}>
@@ -173,7 +192,7 @@ export default function Dashboard() {
 				</div>
 				<div className={styles.dashboard__container}>
 					<h2 className={styles["dashboard__container-title"]}>Заблокированные пользователи</h2>
-					<Chart className={styles.dashboard__chart} type="bar" data={newAdvertsData} />
+					<Chart className={styles.dashboard__chart} type="bar" data={userBlockingsData} />
 				</div>
 			</div>
 		</section>

@@ -8,4 +8,5 @@ export const endpoints: Record<string, string> = {
     animalTypes: `${BASE_URL}/animal-types`,
     localities: `${BASE_URL}/localities`,
     userActions: `${BASE_URL}/user-actions`,
+    userBlockings: `${BASE_URL}/user-blockings`,
 };

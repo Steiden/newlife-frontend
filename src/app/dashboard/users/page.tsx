@@ -1,6 +1,6 @@
 "use client";
 
-import { getUsers, updateUser } from "@/api";
+import { createUserBlocking, getUsers, updateUser } from "@/api";
 import styles from "./page.module.scss";
 import { UserType } from "@/types/Database";
 import { useRouter } from "next/navigation";
@@ -31,6 +31,12 @@ export default function Users() {
 		});
 
 		setUsers(await getUsers());
+
+		await createUserBlocking({
+			period: 1,
+			reason: "Нарушение правил пользования сервисом",
+			user_id: id,
+		});
 	};
 
 	const unblockUser = async (e: any, id: number) => {
