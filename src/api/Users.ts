@@ -34,3 +34,14 @@ export const createUser = async (user: UserType): Promise<UserType> => {
 		return {} as UserType;
 	}
 };
+
+export const updateUser = async (user: UserType): Promise<UserType> => {
+	try {
+		const response: AxiosResponse = await axios.put(`${endpoints.users}/${user.id}`, user);
+		if (response.status !== 200) throw new Error(response.statusText);
+		return response.data.data;
+	} catch (e) {
+		console.error(e);
+		return {} as UserType;
+	}
+};

@@ -2,6 +2,7 @@ import styles from "./Input.module.scss";
 import { HTMLInputTypeAttribute } from "react";
 
 type PropsType = {
+	className?: any;
 	placeholder?: string;
 	type?: HTMLInputTypeAttribute;
 	value?: string;
@@ -10,5 +11,5 @@ type PropsType = {
 };
 
 export const Input = (props: PropsType) => {
-	return <input className={styles.input} {...props} />;
+	return <input {...props} className={`${styles.input} ${props.className}`} />;
 };
