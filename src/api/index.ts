@@ -3,7 +3,7 @@ import { getUsers, getUserByLogin, getUser, createUser, updateUser } from "./Use
 import { createAdvertAdress } from "./AdvertAddress";
 import { getAnimalTypes, updateAnimalType, deleteAnimalType } from "./AnimalType";
 import { getLocalities } from "./Locality";
-import { createUserAction } from "./UserAction";
+import { getUserActions, createUserAction } from "./UserAction";
 
 export {
 	getAdverts,
@@ -20,5 +20,6 @@ export {
 	updateAnimalType,
 	deleteAnimalType,
 	getLocalities,
+	getUserActions,
 	createUserAction,
 };
