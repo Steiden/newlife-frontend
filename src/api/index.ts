@@ -3,6 +3,7 @@ import { getUserByLogin, getUser, createUser, updateUser } from "./Users";
 import { createAdvertAdress } from "./AdvertAddress";
 import { getAnimalTypes } from "./AnimalType";
 import { getLocalities } from "./Locality";
+import { createUserAction } from "./UserAction";
 
 export {
     getAdverts,
@@ -15,5 +16,6 @@ export {
     createAdvert,
     deleteAdvert,
     getAnimalTypes,
-    getLocalities
+    getLocalities,
+    createUserAction
 }

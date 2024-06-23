@@ -7,4 +7,5 @@ export const endpoints: Record<string, string> = {
     advertAddress: `${BASE_URL}/advert-address`,
     animalTypes: `${BASE_URL}/animal-types`,
     localities: `${BASE_URL}/localities`,
+    userActions: `${BASE_URL}/user-actions`,
 };

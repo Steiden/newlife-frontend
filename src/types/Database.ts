@@ -97,9 +97,17 @@ export type UserActionType = {
     user?: UserType;
 }
 
+export enum UserActionTypeEnum {
+    CREATE_ADVERT = 1,
+    UPDATE_ADVERT = 2,
+    DELETE_ADVERT = 3,
+    UPDATE_ACCOUNT = 4,
+    LOG_IN = 5
+}
+
 export type UserActionTypeType = {
     id?: number;
-    name?: string;
+    name?: UserActionTypeEnum;
     created_at?: Date;
     updated_at?: Date;
 }

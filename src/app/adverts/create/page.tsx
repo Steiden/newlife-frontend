@@ -9,15 +9,24 @@ import {
 	AnimalTypeType,
 	LocalityType,
 	RegionType,
+	UserActionTypeEnum,
 	UserType,
 } from "@/types/Database";
 import { useUser } from "@/utils/storage";
 import { Button } from "@/components/UI/Button/Button";
-import { createAdvert, createAdvertAdress, getAnimalTypes, getLocalities } from "@/api";
+import {
+	createAdvert,
+	createAdvertAdress,
+	createUserAction,
+	getAnimalTypes,
+	getLocalities,
+} from "@/api";
 import { Select } from "@/components/UI/Select/Select";
+import { useRouter } from "next/navigation";
 
 export default function AdvertCreate() {
-	const user: UserType = useUser();
+	const router = useRouter();
+	const currUser: UserType = useUser();
 
 	const [title, setTitle] = useState<string>("");
 	const [description, setDescription] = useState<string>("");
@@ -42,7 +51,7 @@ export default function AdvertCreate() {
 	}, []);
 
 	const onSubmit = async (e: FormEvent): Promise<void> => {
-        e.preventDefault();
+		e.preventDefault();
 
 		const advertAdressData: AdvertAddressType = {
 			street_name: street,
@@ -57,11 +66,20 @@ export default function AdvertCreate() {
 			description: description,
 			animal_type_id: animalType.id,
 			advert_address_id: advertAddress.id,
-			user_id: user.id!,
-            advert_status_id: 1
+			user_id: currUser.id!,
+			advert_status_id: 1,
 		};
 
 		const advert: AdvertType = await createAdvert(advertData);
+
+		if (!advert?.id) return;
+
+		await createUserAction({
+			user_action_type_id: UserActionTypeEnum.CREATE_ADVERT,
+			user_id: currUser?.id,
+		});
+
+		router.push(`/adverts/${advert.id}`);
 	};
 
 	return (

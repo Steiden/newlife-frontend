@@ -2,8 +2,14 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import styles from "./page.module.scss";
-import { AdvertType, AnimalTypeType, LocalityType, UserType } from "@/types/Database";
-import { getAdvert, getAnimalTypes, getLocalities, deleteAdvert } from "@/api";
+import {
+	AdvertType,
+	AnimalTypeType,
+	LocalityType,
+	UserActionTypeEnum,
+	UserType,
+} from "@/types/Database";
+import { getAdvert, getAnimalTypes, getLocalities, deleteAdvert, createUserAction } from "@/api";
 import Image from "next/image";
 import { AdvertCardStatus } from "@/components/AdvertCardStatus/AdvertCardStatus";
 import Link from "next/link";
@@ -73,6 +79,11 @@ export default function Advert(props: PropsType) {
 
 		setAdvert(advertUpdated);
 		setIsEditable(false);
+
+		await createUserAction({
+			user_action_type_id: UserActionTypeEnum.UPDATE_ADVERT,
+			user_id: currUser?.id,
+		});
 	};
 
 	return (
@@ -94,6 +105,10 @@ export default function Advert(props: PropsType) {
 								type="button"
 								onClick={async () => {
 									deleteAdvert(advert.id!.toString());
+									await createUserAction({
+										user_action_type_id: UserActionTypeEnum.DELETE_ADVERT,
+										user_id: currUser?.id,
+									});
 									router.push("/adverts/my");
 								}}
 							>

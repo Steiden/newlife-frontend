@@ -2,8 +2,8 @@
 
 import styles from "./page.module.scss";
 import { FormEvent, useEffect, useState } from "react";
-import { UserType } from "@/types/Database";
-import { getUser, updateUser } from "@/api";
+import { UserActionTypeEnum, UserType } from "@/types/Database";
+import { createUserAction, getUser, updateUser } from "@/api";
 import { useUser } from "@/utils/storage";
 import { Input } from "@/components/UI/Input/Input";
 import { Button } from "@/components/UI/Button/Button";
@@ -52,6 +52,11 @@ export default function User(props: PropsType) {
 
 		const userUpdated = await updateUser(userData);
 		setUser(userUpdated);
+
+		await createUserAction({
+			user_action_type_id: UserActionTypeEnum.UPDATE_ACCOUNT,
+			user_id: currUser.id,
+		});
 	};
 
 	return (

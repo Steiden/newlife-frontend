@@ -4,8 +4,8 @@ import { Input } from "@/components/UI/Input/Input";
 import styles from "./page.module.scss";
 import React, { FormEvent, useState } from "react";
 import { Button } from "@/components/UI/Button/Button";
-import { UserType } from "@/types/Database";
-import { getUserByLogin } from "@/api";
+import { UserActionTypeEnum, UserType } from "@/types/Database";
+import { createUserAction, getUserByLogin } from "@/api";
 import { Toast } from "@/components/Toast/Toast";
 import { ToastDataType, ToastStatusEnum } from "@/types/Toast";
 import { useRouter } from "next/navigation";
@@ -41,6 +41,11 @@ export default function Login() {
 			setIsShow(true);
 			return;
 		}
+
+		await createUserAction({
+			user_action_type_id: UserActionTypeEnum.LOG_IN,
+			user_id: user?.id,
+		});
 
 		localStorage.setItem("user", JSON.stringify(user));
 		router.push("/users/me");
